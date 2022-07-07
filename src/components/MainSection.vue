@@ -23,7 +23,11 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 124px;
+  padding: 64px 24px 32px;
   gap: 48px;
+
+  @media screen and (min-width: 1024px) {
+    padding: 124px;
+  }
 }
 </style>

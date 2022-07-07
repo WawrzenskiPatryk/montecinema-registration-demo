@@ -29,9 +29,15 @@ export default {
   font-family: 'Eczar';
   font-style: normal;
   font-weight: 600;
-  font-size: 8rem;
   line-height: 102%;
   letter-spacing: -0.01em;
+  font-size: 4rem;
+  text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    text-align: initial;
+    font-size: 8rem;
+  }
 
   &__part {
     display: block;
