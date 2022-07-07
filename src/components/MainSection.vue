@@ -22,14 +22,19 @@ export default {
     return {
       inputs: [
         {
-          name: 'Email',
+          name: 'email',
           type: 'text',
           placeholder: 'Something ending with monterail.com',
         },
         {
-          name: 'Password',
-          type: 'text',
+          name: 'password',
+          type: 'password',
           placeholder: 'Enter your password',
+        },
+        {
+          name: 'date of birth',
+          type: 'date',
+          placeholder: 'DD / MM / YY',
         },
       ],
     };
