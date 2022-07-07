@@ -1,18 +1,38 @@
 <template>
   <main class="main">
     <MainTitle first-part="Ahoy you!" second-part="Care to register?" />
-    <BaseCard class="page__base-card"></BaseCard>
+    <BaseCard class="page__base-card">
+      <MainForm :inputs="inputs" />
+    </BaseCard>
   </main>
 </template>
 
 <script>
 import BaseCard from './base/BaseCard.vue';
 import MainTitle from './MainTitle.vue';
+import MainForm from './MainForm.vue';
 
 export default {
   components: {
     BaseCard,
     MainTitle,
+    MainForm,
+  },
+  data() {
+    return {
+      inputs: [
+        {
+          name: 'Email',
+          type: 'text',
+          placeholder: 'Something ending with monterail.com',
+        },
+        {
+          name: 'Password',
+          type: 'text',
+          placeholder: 'Enter your password',
+        },
+      ],
+    };
   },
 };
 </script>
