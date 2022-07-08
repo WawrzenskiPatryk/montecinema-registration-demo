@@ -45,6 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
