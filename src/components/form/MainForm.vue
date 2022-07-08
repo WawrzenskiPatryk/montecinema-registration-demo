@@ -9,7 +9,7 @@
     />
     <div class="main-form__buttons">
       <a class="main-form__log-in-button" href="#"> Log in instead </a>
-      <BaseButton @click="nextStep"> Next Step </BaseButton>
+      <BaseButton @click="nextStep"> {{ buttonLabel }} </BaseButton>
     </div>
   </form>
 </template>
@@ -24,6 +24,10 @@ export default {
     BaseButton,
   },
   props: {
+    buttonLabel: {
+      type: String,
+      default: 'Lorem Ipsum',
+    },
     inputs: {
       type: Array,
       default: [
