@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <FormValidator :type="type" :input-value="inputValue" :wasFocused="wasFocused" />
+    <FormValidator :type="type" :input-value="inputValue" :wasBlured="wasBlured" />
   </div>
 </template>
 
@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       inputValue: '',
-      wasFocused: false,
+      wasBlured: false,
       dateInputFocused: false,
       passwordInputVisible: false,
     };
@@ -71,7 +71,8 @@ export default {
   },
   methods: {
     focusHandler(action) {
-      if (action === 'blur') this.wasFocused = true;
+      if (action === 'blur') this.wasBlured = true;
+      if (action === 'focus') this.wasBlured = false;
       if (this.type !== 'date') return;
       if (action === 'focus') {
         this.dateInputFocused = true;

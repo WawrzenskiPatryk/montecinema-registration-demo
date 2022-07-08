@@ -13,7 +13,7 @@
 <script>
 export default {
   props: {
-    wasFocused: {
+    wasBlured: {
       type: Boolean,
       required: true,
     },
@@ -48,17 +48,17 @@ export default {
     },
     passwordLenghClass() {
       if (this.passwordLengthIsCorrect) return 'validation-info--correct';
-      else if (this.wasFocused) return 'validation-info--incorrect';
+      else if (this.wasBlured) return 'validation-info--incorrect';
       else return '';
     },
     passwordLettersClass() {
       if (this.passwordLettersAreCorrect) return 'validation-info--correct';
-      else if (this.wasFocused) return 'validation-info--incorrect';
+      else if (this.wasBlured) return 'validation-info--incorrect';
       else return '';
     },
     passwordDigitsClass() {
       if (this.passwordDigitsAreCorrect) return 'validation-info--correct';
-      else if (this.wasFocused) return 'validation-info--incorrect';
+      else if (this.wasBlured) return 'validation-info--incorrect';
       else return '';
     },
   },
