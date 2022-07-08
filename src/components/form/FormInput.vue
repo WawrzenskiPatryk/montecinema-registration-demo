@@ -2,16 +2,26 @@
   <div class="form-input">
     <label class="form-input__label" :for="name">{{ name }}</label>
 
-    <input
-      :name="name"
-      class="form-input__field"
-      :placeholder="placeholder"
-      :type="computedType"
-      v-model="inputValue"
-      @focus="focusDateHandler('focus')"
-      @blur="focusDateHandler('blur')"
-      required
-    />
+    <div class="form-input__field-wrapper">
+      <input
+        :name="name"
+        class="form-input__field"
+        :placeholder="placeholder"
+        :type="computedType"
+        v-model="inputValue"
+        @focus="focusDateHandler('focus')"
+        @blur="focusDateHandler('blur')"
+        required
+      />
+      <div
+        v-if="type === 'password'"
+        @click="togglePasswordVisibility"
+        class="form-input__show-password-button"
+        :class="{ 'form-input__show-password-button--shown': passwordInputVisible }"
+      >
+        <img src="../../assets/eye.svg" alt="show-password" />
+      </div>
+    </div>
 
     <div v-if="type === 'password'" class="form-input__validation-info">
       <span>At least 8 characters</span>
@@ -48,13 +58,17 @@ export default {
     return {
       inputValue: '',
       dateInputFocused: false,
+      passwordInputVisible: false,
     };
   },
   computed: {
     computedType() {
-      if (this.type === 'date' && this.dateInputFocused) return this.type;
-      if (this.type === 'date') return 'text';
-      return this.type;
+      if (
+        (this.type === 'date' && !this.dateInputFocused) ||
+        (this.type === 'password' && this.passwordInputVisible)
+      ) {
+        return 'text';
+      } else return this.type;
     },
   },
   methods: {
@@ -65,6 +79,9 @@ export default {
       } else if (action === 'blur' && this.inputValue === '') {
         this.dateInputFocused = false;
       }
+    },
+    togglePasswordVisibility() {
+      this.passwordInputVisible = !this.passwordInputVisible;
     },
   },
 };
@@ -88,6 +105,10 @@ export default {
     color: #f47073;
   }
 
+  &__field-wrapper {
+    position: relative;
+  }
+
   &__field {
     gap: 10px;
 
@@ -97,6 +118,7 @@ export default {
     border-radius: 8px;
 
     width: 327px;
+    height: 56px;
     padding: 24px 16px 24px 24px;
 
     font-family: 'Roboto';
@@ -124,7 +146,7 @@ export default {
     &:focus-visible {
       outline: none;
     }
-    
+
     @media (hover: hover) {
       &:hover {
         background: #e5e5e5;
@@ -151,6 +173,33 @@ export default {
     font-weight: 400;
     font-size: 14px;
     line-height: 170%;
+  }
+
+  &__show-password-button {
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    &--shown {
+      &::before {
+        content: '';
+        position: absolute;
+        padding: 14px 0;
+        width: 1.5px;
+        border-radius: 1px;
+        background: #5d5d67;
+        transform: translateY(0.5px) rotate(45deg);
+      }
+    }
   }
 }
 </style>
