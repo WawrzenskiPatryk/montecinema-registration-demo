@@ -9,8 +9,8 @@
         :placeholder="placeholder"
         :type="computedType"
         v-model="inputValue"
-        @focus="focusDateHandler('focus')"
-        @blur="focusDateHandler('blur')"
+        @focus="focusHandler('focus')"
+        @blur="focusHandler('blur')"
         required
       />
       <div
@@ -23,20 +23,17 @@
       </div>
     </div>
 
-    <div v-if="type === 'password'" class="form-input__validation-info">
-      <span>At least 8 characters</span>
-      <span>At least one letter</span>
-      <span>At least one digit</span>
-    </div>
-
-    <div v-else-if="type === 'date'" class="form-input__validation-info">
-      <span>You should be minium 18 years old</span>
-    </div>
+    <FormValidator :type="type" :input-value="inputValue" :wasFocused="wasFocused" />
   </div>
 </template>
 
 <script>
+import FormValidator from './FormValidator.vue';
+
 export default {
+  components: {
+    FormValidator,
+  },
   props: {
     name: {
       type: String,
@@ -57,6 +54,7 @@ export default {
   data() {
     return {
       inputValue: '',
+      wasFocused: false,
       dateInputFocused: false,
       passwordInputVisible: false,
     };
@@ -72,7 +70,8 @@ export default {
     },
   },
   methods: {
-    focusDateHandler(action) {
+    focusHandler(action) {
+      if (action === 'blur') this.wasFocused = true;
       if (this.type !== 'date') return;
       if (action === 'focus') {
         this.dateInputFocused = true;
@@ -160,19 +159,6 @@ export default {
       background: rgba(47, 128, 237, 0.1);
       border: 1px solid #2f80ed;
     }
-  }
-
-  &__validation-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 170%;
   }
 
   &__show-password-button {
