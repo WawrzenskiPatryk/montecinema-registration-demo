@@ -6,11 +6,11 @@
       :name="input.name"
       :type="input.type"
       :placeholder="input.placeholder"
-      @validity-update="checkIfValid"
+      @validity-update="setValidity"
     />
     <div class="main-form__buttons">
       <a class="main-form__log-in-button" href="#"> Log in instead </a>
-      <BaseButton @click="nextStep"> {{ buttonLabel }} </BaseButton>
+      <BaseButton @click.prevent="nextStep"> {{ buttonLabel }} </BaseButton>
     </div>
   </form>
 </template>
@@ -42,16 +42,44 @@ export default {
   },
   data() {
     return {
-      isFormValid: false,
+      storedInputs: [],
     };
+  },
+  mounted() {
+    this.storeInputs();
+  },
+  updated() {
+    this.storeInputs();
+    console.log(this.storedInputs);
   },
   methods: {
     nextStep() {
-      this.$emit('nextStep');
+      console.log(this.storedInputs);
+      for (const input of this.storedInputs) {
+        if (!input.valid) {
+          alert('Fill all input fields!');
+          return;
+        }
+      }
+      this.$emit('nextStep', this.storedInputs);
     },
-    checkIfValid(inputStatus) {
-      console.log('CHANGED:', inputStatus);
-      console.log('Total:', this.inputs.length);
+    setValidity(inputStatus) {
+      for (const input of this.storedInputs) {
+        if (input.name === inputStatus.name) {
+          input.valid = inputStatus.valid;
+          input.value = inputStatus.value;
+        }
+      }
+    },
+    storeInputs() {
+      for (let i = 0; i < this.inputs.length; i++) {
+        const inputObject = {
+          name: this.inputs[i].name,
+          valid: false,
+          value: null,
+        };
+        this.storedInputs.push(inputObject);
+      }
     },
   },
 };

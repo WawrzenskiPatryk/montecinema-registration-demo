@@ -1,5 +1,5 @@
 <template>
-  <main v-if="step < 2" class="main">
+  <main v-if="step < stepsContent.length" class="main">
     <MainTitle
       :first-part="currentContent.title.firstPart"
       :second-part="currentContent.title.secondPart"
@@ -11,6 +11,10 @@
         :button-label="currentContent.buttonLabel"
       />
     </BaseCard>
+  </main>
+  <main v-else>
+    <h1>{{ storedName }}</h1>
+    <h1>{{ storedEmail }}</h1>
   </main>
 </template>
 
@@ -29,8 +33,9 @@ export default {
   },
   data() {
     return {
-      step: 1,
-      formIsValid: false,
+      storedName: '',
+      storedEmail: '',
+      step: 0,
       stepsContent: [
         {
           title: {
@@ -58,22 +63,22 @@ export default {
           },
           inputs: [
             {
-              name: 'first name',
+              name: 'first-name',
               type: 'text',
               placeholder: 'e.g. Jessica',
             },
             {
-              name: 'last name',
+              name: 'last-name',
               type: 'text',
               placeholder: 'e.g. Walton',
             },
             {
-              name: 'date of birth',
+              name: 'date-of-birth',
               type: 'date',
               placeholder: 'DD / MM / YY',
             },
             {
-              name: 'checkbox',
+              name: 'privacy-policy',
               type: 'checkbox',
             },
           ],
@@ -88,8 +93,14 @@ export default {
     },
   },
   methods: {
-    nextHandler() {
-      if (this.formIsValid) this.step++;
+    nextHandler(storedInputs) {
+      this.step++;
+      if (this.step === this.stepsContent.length) {
+        for (const obj of storedInputs) {
+          if (obj.name === 'first-name') this.storedName = obj.value;
+          if (obj.name === 'email') this.storedEmail = obj.value;
+        }
+      }
     },
   },
 };

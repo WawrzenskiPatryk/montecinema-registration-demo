@@ -13,7 +13,7 @@
   </div>
 
   <div v-else class="form-input">
-    <label class="form-input__label" :for="name">{{ name }}</label>
+    <label class="form-input__label" :for="name">{{ computedName }}</label>
 
     <div class="form-input__field-wrapper">
       <input
@@ -79,6 +79,9 @@ export default {
     };
   },
   computed: {
+    computedName() {
+      return this.name.split('-').join(' ');
+    },
     computedType() {
       if (
         (this.type === 'date' && !this.dateInputFocused) ||
@@ -110,8 +113,21 @@ export default {
     },
   },
   watch: {
+    inputValue() {
+      console.log('watcher triggered on value change');
+      this.$emit('validityUpdate', {
+        name: this.name,
+        valid: this.isInputValid,
+        value: this.inputValue,
+      });
+    },
     isInputValid() {
-      this.$emit('validityUpdate', { name: this.name, valid: this.isInputValid });
+      console.log('watcher triggered on validation');
+      this.$emit('validityUpdate', {
+        name: this.name,
+        valid: this.isInputValid,
+        value: this.inputValue,
+      });
     },
   },
 };
