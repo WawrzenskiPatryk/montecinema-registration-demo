@@ -51,6 +51,11 @@ export default {
     },
 
     inputIsCorrect() {
+      if (this.type === 'text') {
+        const textIsCorrect = this.inputValue.length > 0;
+        return textIsCorrect;
+      }
+
       if (this.type === 'email') {
         const emailDomain = '@monterail.com';
         const emailIsCorrect =
