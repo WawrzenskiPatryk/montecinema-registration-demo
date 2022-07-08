@@ -23,7 +23,7 @@ export default {
       inputs: [
         {
           name: 'email',
-          type: 'text',
+          type: 'email',
           placeholder: 'Something ending with monterail.com',
         },
         {

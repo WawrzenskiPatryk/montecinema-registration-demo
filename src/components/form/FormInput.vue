@@ -49,7 +49,7 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        return ['text', 'password', 'date'].join(' ').includes(value);
+        return ['text', 'email', 'password', 'date'].join(' ').includes(value);
       },
     },
     placeholder: {

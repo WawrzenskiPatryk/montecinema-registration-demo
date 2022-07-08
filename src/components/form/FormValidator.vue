@@ -18,7 +18,7 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        return ['text', 'password', 'date'].join(' ').includes(value);
+        return ['text', 'email', 'password', 'date'].join(' ').includes(value);
       },
     },
     inputValue: { type: String, required: true },
@@ -33,12 +33,19 @@ export default {
     passwordDigitsAreCorrect() {
       return /\d/.test(this.inputValue);
     },
-    passwordIsCorrect() {
-      return (
+    inputIsCorrect() {
+      const emailDomain = '@monterail.com';
+
+      const passwordIsCorrect =
         this.passwordLengthIsCorrect &&
         this.passwordLettersAreCorrect &&
-        this.passwordDigitsAreCorrect
-      );
+        this.passwordDigitsAreCorrect;
+
+      const emailIsCorrect =
+        this.inputValue.length > emailDomain.length && this.inputValue.includes(emailDomain);
+
+      if (this.type === 'password') return passwordIsCorrect;
+      else if (this.type === 'email') return emailIsCorrect;
     },
     passwordLenghClass() {
       if (this.passwordLengthIsCorrect) return 'validation-info--correct';
@@ -58,11 +65,11 @@ export default {
   },
   methods: {
     updatePasswordValidity() {
-      this.$emit('update', this.passwordIsCorrect);
+      this.$emit('update', this.inputIsCorrect);
     },
   },
   watch: {
-    passwordIsCorrect() {
+    inputIsCorrect() {
       this.updatePasswordValidity();
     },
   },

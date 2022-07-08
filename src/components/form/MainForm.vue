@@ -11,7 +11,6 @@
       <BaseButton type="hollow"> Log in instead </BaseButton>
       <BaseButton type="fill"> Next Step </BaseButton>
     </div>
-    <BaseButton type="fill"> Go to homepage </BaseButton>
   </form>
 </template>
 
