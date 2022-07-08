@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <MainTitle first-part="Ahoy you!" second-part="Care to register?" />
+    <MainTitle :first-part="title.firstPart" :second-part="title.secondPart" />
     <BaseCard class="page__base-card">
       <MainForm :inputs="inputs" />
     </BaseCard>
@@ -20,6 +20,10 @@ export default {
   },
   data() {
     return {
+      title: {
+        firstPart: 'Ahoy you!',
+        secondPart: 'Care to register?',
+      },
       inputs: [
         {
           name: 'email',

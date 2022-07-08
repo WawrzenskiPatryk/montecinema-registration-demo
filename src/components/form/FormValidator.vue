@@ -6,7 +6,7 @@
   </div>
 
   <div v-else-if="type === 'date'" class="validation-info">
-    <span :class="{ 'validation-info--correct': true }">You should be minium 18 years old</span>
+    <span :class="dateClass"> You should be minium 18 years old </span>
   </div>
 </template>
 
@@ -33,6 +33,23 @@ export default {
     passwordDigitsAreCorrect() {
       return /\d/.test(this.inputValue);
     },
+
+    dateIsCorrect() {
+      if (this.inputValue) {
+        const today = new Date();
+        const birthDate = new Date(this.inputValue);
+        const yearsDifference = today.getFullYear() - birthDate.getFullYear();
+        const monthsDifference = today.getMonth() - birthDate.getMonth();
+        const daysDifference = today.getDate() - birthDate.getDate();
+        let realAge;
+
+        if (monthsDifference < 0 || daysDifference < 0) realAge = yearsDifference - 1;
+        else realAge = yearsDifference;
+
+        if (realAge >= 18) return true;
+      } else return false;
+    },
+
     inputIsCorrect() {
       if (this.type === 'email') {
         const emailDomain = '@monterail.com';
@@ -49,24 +66,32 @@ export default {
 
         return passwordIsCorrect;
       }
+
+      if (this.type === 'date') {
+        const dateIsCorrect = this.dateIsCorrect;
+        return dateIsCorrect;
+      }
+    },
+
+    dateClass() {
+      return this.getValidityClass(this.dateIsCorrect);
     },
     passwordLenghClass() {
-      if (this.passwordLengthIsCorrect) return 'validation-info--correct';
-      else if (this.wasBlured) return 'validation-info--incorrect';
-      else return '';
+      return this.getValidityClass(this.passwordLengthIsCorrect);
     },
     passwordLettersClass() {
-      if (this.passwordLettersAreCorrect) return 'validation-info--correct';
-      else if (this.wasBlured) return 'validation-info--incorrect';
-      else return '';
+      return this.getValidityClass(this.passwordLettersAreCorrect);
     },
     passwordDigitsClass() {
-      if (this.passwordDigitsAreCorrect) return 'validation-info--correct';
-      else if (this.wasBlured) return 'validation-info--incorrect';
-      else return '';
+      return this.getValidityClass(this.passwordDigitsAreCorrect);
     },
   },
   methods: {
+    getValidityClass(condition) {
+      if (condition) return 'validation-info--correct';
+      else if (this.wasBlured) return 'validation-info--incorrect';
+      else return '';
+    },
     updatePasswordValidity() {
       this.$emit('update', this.inputIsCorrect);
     },
