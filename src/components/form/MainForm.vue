@@ -6,6 +6,7 @@
       :name="input.name"
       :type="input.type"
       :placeholder="input.placeholder"
+      @validity-update="checkIfValid"
     />
     <div class="main-form__buttons">
       <a class="main-form__log-in-button" href="#"> Log in instead </a>
@@ -39,10 +40,18 @@ export default {
       ],
     },
   },
+  data() {
+    return {
+      isFormValid: false,
+    };
+  },
   methods: {
     nextStep() {
       this.$emit('nextStep');
-      console.log('clicked');
+    },
+    checkIfValid(inputStatus) {
+      console.log('CHANGED:', inputStatus);
+      console.log('Total:', this.inputs.length);
     },
   },
 };

@@ -18,10 +18,10 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        return ['text', 'email', 'password', 'date'].join(' ').includes(value);
+        return ['text', 'email', 'password', 'date', 'checkbox'].join(' ').includes(value);
       },
     },
-    inputValue: { type: String, required: true },
+    inputValue: { type: [String, Boolean], required: true },
   },
   computed: {
     passwordLengthIsCorrect() {
@@ -47,10 +47,16 @@ export default {
         else realAge = yearsDifference;
 
         if (realAge >= 18) return true;
+        else return false;
       } else return false;
     },
 
     inputIsCorrect() {
+      if (this.type === 'checkbox') {
+        const checkboxIsCorrect = this.inputValue;
+        return checkboxIsCorrect;
+      }
+
       if (this.type === 'text') {
         const textIsCorrect = this.inputValue.length > 0;
         return textIsCorrect;
@@ -97,13 +103,13 @@ export default {
       else if (this.wasBlured) return 'validation-info--incorrect';
       else return '';
     },
-    updatePasswordValidity() {
+    updateInputValidity() {
       this.$emit('update', this.inputIsCorrect);
     },
   },
   watch: {
     inputIsCorrect() {
-      this.updatePasswordValidity();
+      this.updateInputValidity();
     },
   },
 };

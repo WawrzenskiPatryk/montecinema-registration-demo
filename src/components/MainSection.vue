@@ -6,7 +6,7 @@
     />
     <BaseCard class="page__base-card">
       <MainForm
-        @next-step="step++"
+        @next-step="nextHandler"
         :inputs="currentContent.inputs"
         :button-label="currentContent.buttonLabel"
       />
@@ -29,7 +29,8 @@ export default {
   },
   data() {
     return {
-      step: 0,
+      step: 1,
+      formIsValid: false,
       stepsContent: [
         {
           title: {
@@ -84,6 +85,11 @@ export default {
   computed: {
     currentContent() {
       return this.stepsContent[this.step];
+    },
+  },
+  methods: {
+    nextHandler() {
+      if (this.formIsValid) this.step++;
     },
   },
 };

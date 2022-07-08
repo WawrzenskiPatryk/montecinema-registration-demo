@@ -4,6 +4,12 @@
     <label class="form-input__checkbox-label" :for="name">
       I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
     </label>
+    <FormValidator
+      @update="updateInputValidity"
+      :type="type"
+      :input-value="inputValue"
+      :wasBlured="wasBlured"
+    />
   </div>
 
   <div v-else class="form-input">
@@ -101,6 +107,11 @@ export default {
     },
     updateInputValidity(value) {
       this.isInputValid = value;
+    },
+  },
+  watch: {
+    isInputValid() {
+      this.$emit('validityUpdate', { name: this.name, valid: this.isInputValid });
     },
   },
 };
