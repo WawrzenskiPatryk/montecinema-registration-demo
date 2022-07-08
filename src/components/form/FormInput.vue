@@ -6,6 +6,7 @@
       <input
         :name="name"
         class="form-input__field"
+        :class="inputClass"
         :placeholder="placeholder"
         :type="computedType"
         v-model="inputValue"
@@ -23,7 +24,12 @@
       </div>
     </div>
 
-    <FormValidator :type="type" :input-value="inputValue" :wasBlured="wasBlured" />
+    <FormValidator
+      @update="updateInputValidity"
+      :type="type"
+      :input-value="inputValue"
+      :wasBlured="wasBlured"
+    />
   </div>
 </template>
 
@@ -54,6 +60,7 @@ export default {
   data() {
     return {
       inputValue: '',
+      isInputValid: false,
       wasBlured: false,
       dateInputFocused: false,
       passwordInputVisible: false,
@@ -67,6 +74,9 @@ export default {
       ) {
         return 'text';
       } else return this.type;
+    },
+    inputClass() {
+      if (this.wasBlured && !this.isInputValid) return 'form-input__field--incorrect';
     },
   },
   methods: {
@@ -82,6 +92,9 @@ export default {
     },
     togglePasswordVisibility() {
       this.passwordInputVisible = !this.passwordInputVisible;
+    },
+    updateInputValidity(value) {
+      this.isInputValid = value;
     },
   },
 };
@@ -132,6 +145,10 @@ export default {
 
     @media screen and (min-width: 1024px) {
       width: 472px;
+    }
+
+    &--incorrect {
+      border: 1px solid #ec1115;
     }
 
     &::placeholder {

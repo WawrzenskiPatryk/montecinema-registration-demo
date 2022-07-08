@@ -13,10 +13,7 @@
 <script>
 export default {
   props: {
-    wasBlured: {
-      type: Boolean,
-      required: true,
-    },
+    wasBlured: { type: Boolean, required: true },
     type: {
       type: String,
       required: true,
@@ -24,10 +21,7 @@ export default {
         return ['text', 'password', 'date'].join(' ').includes(value);
       },
     },
-    inputValue: {
-      type: String,
-      required: true,
-    },
+    inputValue: { type: String, required: true },
   },
   computed: {
     passwordLengthIsCorrect() {
@@ -60,6 +54,16 @@ export default {
       if (this.passwordDigitsAreCorrect) return 'validation-info--correct';
       else if (this.wasBlured) return 'validation-info--incorrect';
       else return '';
+    },
+  },
+  methods: {
+    updatePasswordValidity() {
+      this.$emit('update', this.passwordIsCorrect);
+    },
+  },
+  watch: {
+    passwordIsCorrect() {
+      this.updatePasswordValidity();
     },
   },
 };
