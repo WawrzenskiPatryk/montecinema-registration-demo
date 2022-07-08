@@ -41,6 +41,7 @@ export default {
   },
   methods: {
     nextStep() {
+      this.$emit('nextStep');
       console.log('clicked');
     },
   },

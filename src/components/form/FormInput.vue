@@ -19,7 +19,6 @@
         v-model="inputValue"
         @focus="focusHandler('focus')"
         @blur="focusHandler('blur')"
-        required
       />
       <div
         v-if="type === 'password'"

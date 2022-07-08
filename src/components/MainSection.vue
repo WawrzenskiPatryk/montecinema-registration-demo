@@ -5,7 +5,11 @@
       :second-part="currentContent.title.secondPart"
     />
     <BaseCard class="page__base-card">
-      <MainForm :inputs="currentContent.inputs" :button-label="currentContent.buttonLabel" />
+      <MainForm
+        @next-step="step++"
+        :inputs="currentContent.inputs"
+        :button-label="currentContent.buttonLabel"
+      />
     </BaseCard>
   </main>
 </template>
