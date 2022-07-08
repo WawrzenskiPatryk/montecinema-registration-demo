@@ -10,7 +10,7 @@
 <script>
 import BaseCard from './base/BaseCard.vue';
 import MainTitle from './MainTitle.vue';
-import MainForm from './MainForm.vue';
+import MainForm from './form/MainForm.vue';
 
 export default {
   components: {

@@ -124,10 +124,12 @@ export default {
     &:focus-visible {
       outline: none;
     }
-
-    &:hover {
-      background: #e5e5e5;
-      border: 1px solid #e5e5e5;
+    
+    @media (hover: hover) {
+      &:hover {
+        background: #e5e5e5;
+        border: 1px solid #e5e5e5;
+      }
     }
 
     &:focus,
