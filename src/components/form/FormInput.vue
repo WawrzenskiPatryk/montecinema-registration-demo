@@ -132,6 +132,7 @@ export default {
 
     &:focus,
     &:active {
+      line-height: 18px;
       background: rgba(47, 128, 237, 0.1);
       border: 1px solid #2f80ed;
     }
