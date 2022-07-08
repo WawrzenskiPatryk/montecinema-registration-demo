@@ -26,6 +26,11 @@ export default {
       },
       inputs: [
         {
+          name: 'first name',
+          type: 'text',
+          placeholder: 'e.g. Jessica',
+        },
+        {
           name: 'email',
           type: 'email',
           placeholder: 'Something ending with monterail.com',
@@ -39,6 +44,10 @@ export default {
           name: 'date of birth',
           type: 'date',
           placeholder: 'DD / MM / YY',
+        },
+        {
+          name: 'checkbox',
+          type: 'checkbox',
         },
       ],
     };

@@ -1,5 +1,12 @@
 <template>
-  <div class="form-input">
+  <div v-if="type === 'checkbox'" class="form-input form-input--checkbox">
+    <input class="form-input__checkbox" :name="name" v-model="inputValue" :type="computedType" />
+    <label class="form-input__checkbox-label" :for="name">
+      I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
+    </label>
+  </div>
+
+  <div v-else class="form-input">
     <label class="form-input__label" :for="name">{{ name }}</label>
 
     <div class="form-input__field-wrapper">
@@ -49,12 +56,12 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        return ['text', 'email', 'password', 'date'].join(' ').includes(value);
+        return ['text', 'email', 'password', 'date', 'checkbox'].join(' ').includes(value);
       },
     },
     placeholder: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   data() {
@@ -107,6 +114,73 @@ export default {
   align-items: flex-start;
   padding: 0px;
   gap: 12px;
+
+  &--checkbox {
+    flex-direction: row;
+    align-items: center;
+    height: 24px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #292a33;
+  }
+
+  &__checkbox {
+    position: relative;
+    left: 0;
+    width: 24px;
+    height: 24px;
+
+    // &::after,
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    //   padding: 12px;
+    //   background: #ffffff;
+    //   cursor: pointer;
+    // }
+    // &::after {
+    //   border: 0.75px solid #aeaeb3;
+    //   border-radius: 8px;
+    // }
+    // @media (hover: hover) {
+    //   &:hover::after {
+    //     background: #f7f7f7;
+    //   }
+    // }
+    // &:checked::after {
+    //   content: '\002714';
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   padding: 0;
+    //   width: 26px;
+    //   height: 26px;
+    //   background: #5d5d67;
+    //   border-color: #5d5d67;
+    //   color: #ffffff;
+    //   font-size: 20px;
+    // }
+
+    // ---- debugging class to be deleted ------
+    // &::before {
+    // border: 1px solid red;
+    // opacity: 0.5;
+    // }
+    // -----------------------------------------
+  }
+
+  &__checkbox-link {
+    text-decoration: underline;
+    color: #292a33;
+  }
 
   &__label {
     font-family: 'Roboto Mono';
