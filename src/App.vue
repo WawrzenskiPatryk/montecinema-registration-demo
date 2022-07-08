@@ -33,4 +33,8 @@ export default {
 html {
   font-size: 62.5%;
 }
+
+a {
+  text-decoration: none;
+}
 </style>

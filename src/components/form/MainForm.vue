@@ -1,5 +1,5 @@
 <template>
-  <form class="main-form">
+  <form @submit.prevent class="main-form">
     <FormInput
       v-for="input in inputs"
       :key="input.name"
@@ -8,8 +8,8 @@
       :placeholder="input.placeholder"
     />
     <div class="main-form__buttons">
-      <BaseButton type="hollow"> Log in instead </BaseButton>
-      <BaseButton type="fill"> Next Step </BaseButton>
+      <a class="main-form__log-in-button" href="#"> Log in instead </a>
+      <BaseButton @click="nextStep"> Next Step </BaseButton>
     </div>
   </form>
 </template>
@@ -33,6 +33,11 @@ export default {
           placeholder: 'Lorem ipsum dolor sir amet',
         },
       ],
+    },
+  },
+  methods: {
+    nextStep() {
+      console.log('clicked');
     },
   },
 };
@@ -73,6 +78,35 @@ export default {
       @media screen and (min-width: 1024px) {
         width: 50%;
       }
+    }
+  }
+
+  &__log-in-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+
+    cursor: pointer;
+    border: 5px solid;
+    height: 56px;
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #ec1115;
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:active {
+      color: #f47073;
     }
   }
 }

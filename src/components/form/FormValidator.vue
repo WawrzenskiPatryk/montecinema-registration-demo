@@ -34,18 +34,21 @@ export default {
       return /\d/.test(this.inputValue);
     },
     inputIsCorrect() {
-      const emailDomain = '@monterail.com';
+      if (this.type === 'email') {
+        const emailDomain = '@monterail.com';
+        const emailIsCorrect =
+          this.inputValue.length > emailDomain.length && this.inputValue.includes(emailDomain);
+        return emailIsCorrect;
+      }
 
-      const passwordIsCorrect =
-        this.passwordLengthIsCorrect &&
-        this.passwordLettersAreCorrect &&
-        this.passwordDigitsAreCorrect;
+      if (this.type === 'password') {
+        const passwordIsCorrect =
+          this.passwordLengthIsCorrect &&
+          this.passwordLettersAreCorrect &&
+          this.passwordDigitsAreCorrect;
 
-      const emailIsCorrect =
-        this.inputValue.length > emailDomain.length && this.inputValue.includes(emailDomain);
-
-      if (this.type === 'password') return passwordIsCorrect;
-      else if (this.type === 'email') return emailIsCorrect;
+        return passwordIsCorrect;
+      }
     },
     passwordLenghClass() {
       if (this.passwordLengthIsCorrect) return 'validation-info--correct';
