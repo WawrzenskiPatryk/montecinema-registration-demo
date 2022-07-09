@@ -9,8 +9,8 @@
       @validity-update="setValidity"
     />
     <div class="main-form__buttons">
-      <a class="main-form__log-in-button" href="#"> Log in instead </a>
       <BaseButton @click.prevent="nextStep"> {{ buttonLabel }} </BaseButton>
+      <a class="main-form__log-in-button" href="#"> Log in instead </a>
     </div>
   </form>
 </template>
@@ -95,14 +95,14 @@ export default {
 
   &__buttons {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: stretch;
     gap: 1.6rem;
 
     width: 32.7rem;
 
     @media screen and (min-width: 1024px) {
-      flex-direction: row;
+      flex-direction: row-reverse;
       width: 47.2rem;
     }
 
