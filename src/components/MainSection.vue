@@ -41,7 +41,7 @@ export default {
     return {
       storedName: 'Lorem',
       storedEmail: 'loremipsum@loremipsum.com',
-      step: 0,
+      step: 2,
       stepsContent: [
         {
           title: {
@@ -123,16 +123,18 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 64px 24px;
-  gap: 48px;
+  padding: 6.4rem 2.4rem;
+  gap: 4.8rem;
+
   min-height: 80vh;
 
   @media screen and (min-width: 1024px) {
-    padding: 124px;
+    padding: 12.4rem;
   }
 
   &__button {
-    max-width: 500px;
     width: 100%;
+    max-width: 32.7rem;
     @media screen and (min-width: 1024px) {
       width: initial;
     }
@@ -142,8 +144,8 @@ export default {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
     text-align: center;
     color: #292a33;
   }
