@@ -91,29 +91,19 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-  gap: 24px;
+  gap: 2.4rem;
 
   &__buttons {
     display: flex;
     flex-direction: column-reverse;
     align-items: stretch;
-    padding: 0px;
-    gap: 16px;
+    gap: 1.6rem;
 
-    width: 327px;
-    // height: 128px;
+    width: 32.7rem;
 
     @media screen and (min-width: 1024px) {
-      display: flex;
       flex-direction: row;
-      align-items: flex-start;
-      justify-content: stretch;
-      padding: 0px;
-      gap: 16px;
-
-      width: 472px;
-      height: 56px;
+      width: 47.2rem;
     }
 
     & > * {
@@ -132,12 +122,12 @@ export default {
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 100%;
 
     cursor: pointer;
     border: 5px solid;
-    height: 56px;
+    height: 5.6rem;
     background: #ffffff;
     border-color: #ffffff;
     color: #ec1115;
