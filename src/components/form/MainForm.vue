@@ -50,11 +50,9 @@ export default {
   },
   updated() {
     this.storeInputs();
-    console.log(this.storedInputs);
   },
   methods: {
     nextStep() {
-      console.log(this.storedInputs);
       for (const input of this.storedInputs) {
         if (!input.valid) {
           alert('Fill all input fields!');
