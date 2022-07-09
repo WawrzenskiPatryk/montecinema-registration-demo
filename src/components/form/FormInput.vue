@@ -218,16 +218,14 @@ export default {
 
     width: 32.7rem;
     height: 5.6rem;
-    padding: 0 2.4rem;
+    padding: 0 10.1rem 0 2.4rem;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 1.8rem;
 
-    // NOT WORKING EXACTLY AS INTENDED
     text-overflow: ellipsis;
-    //
 
     @media screen and (min-width: 1024px) {
       width: 47.2rem;
