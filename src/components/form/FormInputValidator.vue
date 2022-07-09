@@ -52,36 +52,22 @@ export default {
     },
 
     inputIsCorrect() {
-      if (this.type === 'checkbox') {
-        const checkboxIsCorrect = this.inputValue;
-        return checkboxIsCorrect;
-      }
-
-      if (this.type === 'text') {
-        const textIsCorrect = this.inputValue.length > 0;
-        return textIsCorrect;
-      }
-
       if (this.type === 'email') {
-        const emailDomain = '@monterail.com';
-        const emailIsCorrect =
-          this.inputValue.length > emailDomain.length && this.inputValue.includes(emailDomain);
-        return emailIsCorrect;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(this.inputValue);
       }
 
       if (this.type === 'password') {
-        const passwordIsCorrect =
+        return (
           this.passwordLengthIsCorrect &&
           this.passwordLettersAreCorrect &&
-          this.passwordDigitsAreCorrect;
-
-        return passwordIsCorrect;
+          this.passwordDigitsAreCorrect
+        );
       }
 
-      if (this.type === 'date') {
-        const dateIsCorrect = this.dateIsCorrect;
-        return dateIsCorrect;
-      }
+      if (this.type === 'checkbox') return this.inputValue;
+      if (this.type === 'date') return this.dateIsCorrect;
+      if (this.type === 'text') return this.inputValue.length > 0;
     },
 
     dateClass() {
