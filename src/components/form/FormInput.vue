@@ -29,8 +29,8 @@
       <div
         v-if="type === 'password'"
         @click="togglePasswordVisibility"
-        class="form-input__show-password-button"
-        :class="{ 'form-input__show-password-button--shown': passwordInputVisible }"
+        class="form-input__password-visibility-button"
+        :class="{ 'form-input__password-visibility-button--shown': passwordInputVisible }"
       >
         <img src="../../assets/eye.svg" alt="show-password" />
       </div>
@@ -138,19 +138,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-  gap: 12px;
+  gap: 1.2rem;
 
   &--checkbox {
     flex-direction: row;
     align-items: center;
-    height: 24px;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
 
     color: #292a33;
   }
@@ -158,8 +156,8 @@ export default {
   &__checkbox {
     position: relative;
     left: 0;
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
     opacity: 0;
   }
 
@@ -170,13 +168,13 @@ export default {
       position: absolute;
       left: 0;
       transform: translateY(-2px);
-      width: 24px;
-      height: 24px;
+      width: 2.4rem;
+      height: 2.4rem;
       background: #ffffff;
     }
     &::before {
       border: 0.75px solid #aeaeb3;
-      border-radius: 8px;
+      border-radius: 0.8rem;
     }
   }
 
@@ -189,12 +187,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
     background: #5d5d67;
     border-color: #5d5d67;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   &__checkbox-link {
@@ -206,8 +202,8 @@ export default {
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
     text-transform: uppercase;
     color: #f47073;
   }
@@ -217,28 +213,26 @@ export default {
   }
 
   &__field {
-    gap: 10px;
-
     background: #f7f7f7;
     color: #343541;
     border: 1px solid #f7f7f7;
-    border-radius: 8px;
+    border-radius: 0.8rem;
 
-    width: 327px;
-    height: 56px;
-    padding: 24px 16px 24px 24px;
+    width: 32.7rem;
+    height: 5.6rem;
+    padding: 2.4rem 1.6rem 2.4rem 2.4rem;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 1.8rem;
 
     // NOT WORKING EXACTLY AS INTENDED
     text-overflow: ellipsis;
     //
 
     @media screen and (min-width: 1024px) {
-      width: 472px;
+      width: 47.2rem;
     }
 
     &--incorrect {
@@ -250,8 +244,8 @@ export default {
       font-family: 'Roboto';
       font-style: normal;
       font-weight: 400;
-      font-size: 18px;
-      line-height: 21px;
+      font-size: 1.8rem;
+      line-height: 2.1rem;
     }
 
     &:focus-visible {
@@ -267,32 +261,32 @@ export default {
 
     &:focus,
     &:active {
-      line-height: 18px;
+      line-height: 1.8rem;
       background: rgba(47, 128, 237, 0.1);
       border: 1px solid #2f80ed;
     }
   }
 
-  &__show-password-button {
+  &__password-visibility-button {
     user-select: none;
     position: absolute;
+    right: 1.6rem;
     top: 50%;
-    right: 16px;
     transform: translateY(-50%);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 32px;
+    width: 3.2rem;
+    height: 3.2rem;
     cursor: pointer;
 
     &--shown {
       &::before {
         content: '';
         position: absolute;
-        padding: 14px 0;
-        width: 1.5px;
+        padding: 1.4rem 0;
+        width: 0.15rem;
         border-radius: 1px;
         background: #5d5d67;
         transform: translateY(0.5px) rotate(45deg);
