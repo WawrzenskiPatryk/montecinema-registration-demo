@@ -170,7 +170,7 @@ export default {
       transform: translateY(-2px);
       width: 2.4rem;
       height: 2.4rem;
-      background: #ffffff;
+      background-color: #ffffff;
     }
     &::before {
       border: 0.75px solid #aeaeb3;
@@ -179,7 +179,7 @@ export default {
   }
 
   &__checkbox:hover + &__checkbox-label::before {
-    background: #f7f7f7;
+    background-color: #f7f7f7;
   }
 
   &__checkbox:checked + &__checkbox-label::before {
@@ -187,7 +187,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #5d5d67;
+    background-color: #5d5d67;
     border-color: #5d5d67;
     color: #ffffff;
     font-size: 2rem;
@@ -213,7 +213,7 @@ export default {
   }
 
   &__field {
-    background: #f7f7f7;
+    background-color: #f7f7f7;
     color: #343541;
     border: 1px solid #f7f7f7;
     border-radius: 0.8rem;
@@ -254,7 +254,7 @@ export default {
 
     @media (hover: hover) {
       &:hover {
-        background: #e5e5e5;
+        background-color: #e5e5e5;
         border: 1px solid #e5e5e5;
       }
     }
@@ -262,7 +262,7 @@ export default {
     &:focus,
     &:active {
       line-height: 1.8rem;
-      background: rgba(47, 128, 237, 0.1);
+      background-color: rgba(47, 128, 237, 0.1);
       border: 1px solid #2f80ed;
     }
   }
@@ -288,7 +288,7 @@ export default {
         padding: 1.4rem 0;
         width: 0.15rem;
         border-radius: 1px;
-        background: #5d5d67;
+        background-color: #5d5d67;
         transform: translateY(0.5px) rotate(45deg);
       }
     }

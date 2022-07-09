@@ -41,7 +41,7 @@ export default {
     return {
       storedName: 'Lorem',
       storedEmail: 'loremipsum@loremipsum.com',
-      step: 2,
+      step: 0,
       stepsContent: [
         {
           title: {

@@ -15,7 +15,7 @@
   border: 5px solid;
   height: 5.6rem;
 
-  background: #ec1115;
+  background-color: #ec1115;
   border-color: #ec1115;
   color: #ffffff;
 
@@ -24,7 +24,7 @@
 
   @media (hover: hover) {
     &:hover {
-      background: #a60c0e;
+      background-color: #a60c0e;
       border-color: #a60c0e;
     }
   }

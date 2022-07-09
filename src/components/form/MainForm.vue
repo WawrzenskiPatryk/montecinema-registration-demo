@@ -128,7 +128,7 @@ export default {
     cursor: pointer;
     border: 5px solid;
     height: 5.6rem;
-    background: #ffffff;
+    background-color: #ffffff;
     border-color: #ffffff;
     color: #ec1115;
 
