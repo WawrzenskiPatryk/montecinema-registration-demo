@@ -125,7 +125,7 @@ export default {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 170%;
 
   &--incorrect {
