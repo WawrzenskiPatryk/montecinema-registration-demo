@@ -9,14 +9,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 40px;
+  gap: 4rem;
   position: relative;
 
   @media screen and (min-width: 1024px) {
-    width: 600px;
-    padding: 64px;
-    box-shadow: 0px 4px 22px rgba(52, 53, 65, 0.15);
-    border-radius: 24px;
+    width: 60rem;
+    padding: 6.4rem;
+    box-shadow: 0 0.4rem 2.2rem rgba(52, 53, 65, 0.15);
+    border-radius: 2.4rem;
   }
 }
 </style>

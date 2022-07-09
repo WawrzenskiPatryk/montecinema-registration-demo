@@ -9,18 +9,18 @@
   font-family: 'Roboto Mono';
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 100%;
   cursor: pointer;
   border: 5px solid;
-  height: 56px;
+  height: 5.6rem;
 
   background: #ec1115;
   border-color: #ec1115;
   color: #ffffff;
 
-  border-radius: 64px;
-  padding: 0 40px;
+  border-radius: 6.4rem;
+  padding: 0 4rem;
 
   @media (hover: hover) {
     &:hover {
