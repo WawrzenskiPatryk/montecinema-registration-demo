@@ -218,7 +218,7 @@ export default {
 
     width: 32.7rem;
     height: 5.6rem;
-    padding: 2.4rem 1.6rem 2.4rem 2.4rem;
+    padding: 0 2.4rem;
 
     font-family: 'Roboto';
     font-style: normal;
