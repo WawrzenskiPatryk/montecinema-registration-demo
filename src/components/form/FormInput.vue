@@ -218,7 +218,7 @@ export default {
 
     width: 32.7rem;
     height: 5.6rem;
-    padding: 0 10.1rem 0 2.4rem;
+    padding: 0 2.4rem;
 
     font-family: 'Roboto';
     font-style: normal;
@@ -242,6 +242,7 @@ export default {
       font-weight: 400;
       font-size: 1.8rem;
       line-height: 2.1rem;
+      margin-right: 7.6rem;
     }
 
     &:focus-visible {
