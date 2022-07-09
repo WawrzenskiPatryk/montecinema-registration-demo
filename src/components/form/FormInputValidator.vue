@@ -28,10 +28,12 @@ export default {
       return this.inputValue.length >= 8;
     },
     passwordLettersAreCorrect() {
-      return /[a-zA-Z]/g.test(this.inputValue);
+      const lettersRegex = /[a-zA-Z]/g;
+      return lettersRegex.test(this.inputValue);
     },
     passwordDigitsAreCorrect() {
-      return /\d/.test(this.inputValue);
+      const digitsRegex = /\d/;
+      return digitsRegex.test(this.inputValue);
     },
 
     dateIsCorrect() {
