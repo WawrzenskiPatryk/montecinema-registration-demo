@@ -1,38 +1,34 @@
 <template>
-  <div v-if="type === 'checkbox'" class="form-input form-input--checkbox">
-    <input class="form-input__checkbox" :name="name" v-model="inputValue" :type="computedType" />
-    <label class="form-input__checkbox-label" :for="name">
-      I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
-    </label>
-    <FormInputValidator
-      @update="updateInputValidity"
-      :type="type"
-      :input-value="inputValue"
-      :wasBlured="wasBlured"
-    />
-  </div>
+  <div class="form-input__wrapper">
+    <div v-if="type === 'checkbox'" class="form-input form-input--checkbox">
+      <input class="form-input__checkbox" :name="name" v-model="inputValue" :type="computedType" />
+      <label class="form-input__checkbox-label" :for="name">
+        I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
+      </label>
+    </div>
 
-  <div v-else class="form-input">
-    <label class="form-input__label" :for="name">{{ computedName }}</label>
+    <div v-else class="form-input">
+      <label class="form-input__label" :for="name">{{ computedName }}</label>
 
-    <div class="form-input__field-wrapper">
-      <input
-        :name="name"
-        class="form-input__field"
-        :class="inputClass"
-        :placeholder="placeholder"
-        :type="computedType"
-        v-model="inputValue"
-        @focus="focusHandler('focus')"
-        @blur="focusHandler('blur')"
-      />
-      <div
-        v-if="type === 'password'"
-        @click="togglePasswordVisibility"
-        class="form-input__password-visibility-button"
-        :class="{ 'form-input__password-visibility-button--shown': passwordInputVisible }"
-      >
-        <img src="../../assets/eye.svg" alt="show-password" />
+      <div class="form-input__field-wrapper">
+        <input
+          :name="name"
+          class="form-input__field"
+          :class="inputClass"
+          :placeholder="placeholder"
+          :type="computedType"
+          v-model="inputValue"
+          @focus="focusHandler('focus')"
+          @blur="focusHandler('blur')"
+        />
+        <div
+          v-if="type === 'password'"
+          @click="togglePasswordVisibility"
+          class="form-input__password-visibility-button"
+          :class="{ 'form-input__password-visibility-button--shown': passwordInputVisible }"
+        >
+          <img src="../../assets/eye.svg" alt="show-password" />
+        </div>
       </div>
     </div>
 
@@ -135,10 +131,12 @@ export default {
 
 <style lang="scss" scoped>
 .form-input {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.2rem;
+  &,
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
 
   &--checkbox {
     flex-direction: row;
