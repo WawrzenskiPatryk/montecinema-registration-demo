@@ -172,15 +172,20 @@ export default {
       width: 2.4rem;
       height: 2.4rem;
       background-color: #ffffff;
-    }
-    &::before {
       border: 0.75px solid #aeaeb3;
       border-radius: 0.8rem;
     }
   }
 
-  &__checkbox:hover + &__checkbox-label::before {
+  @media (hover: hover) {
+    &__checkbox:hover + &__checkbox-label::before {
+      background-color: #f7f7f7;
+    }
+  }
+
+  &__checkbox:focus-visible + &__checkbox-label::before {
     background-color: #f7f7f7;
+    outline: #f47073 solid 2px;
   }
 
   &__checkbox:checked + &__checkbox-label::before {

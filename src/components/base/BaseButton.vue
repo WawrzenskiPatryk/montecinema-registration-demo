@@ -29,8 +29,10 @@
     }
   }
 
+  &:focus-visible,
   &:active {
     border-color: #f47073;
+    outline: none;
   }
 }
 </style>
