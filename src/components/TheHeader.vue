@@ -35,9 +35,8 @@
     color: #343541;
 
     display: none;
-
     @media screen and (min-width: 1024px) {
-      display: block;
+      display: initial;
     }
   }
 }
