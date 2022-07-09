@@ -45,9 +45,9 @@ export default {
   },
   data() {
     return {
+      step: 0,
       storedName: 'Lorem',
       storedEmail: 'lorem@loremipsum.com',
-      step: 0,
     };
   },
   computed: {
