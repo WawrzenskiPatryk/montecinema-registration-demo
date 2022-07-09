@@ -16,10 +16,10 @@ export default {
     TheHeader,
     MainSection,
   },
-  computed: {
-    stepsContent() {
-      return steps;
-    },
+  data() {
+    return {
+      stepsContent: steps,
+    };
   },
 };
 </script>
