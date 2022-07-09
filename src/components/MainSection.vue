@@ -1,5 +1,5 @@
 <template>
-  <main v-if="step < stepsContent.length" class="main">
+  <main v-if="stepCounter < stepsContent.length" class="main">
     <MainTitle
       :first-part="currentContent.title.firstPart"
       :second-part="currentContent.title.secondPart"
@@ -14,7 +14,7 @@
   </main>
 
   <main v-else class="main">
-    <MainTitle :first-part="`Good job ${storedName}!`" second-part="" />
+    <MainTitle :first-part="`Good job ${capitalizedName}!`" second-part="" />
     <span class="main__success-info">
       We have sent you an email to <strong> {{ storedEmail }} </strong>.
       <br />
@@ -45,20 +45,23 @@ export default {
   },
   data() {
     return {
-      step: 0,
-      storedName: 'Lorem',
+      stepCounter: 0,
+      storedName: 'lorem',
       storedEmail: 'lorem@loremipsum.com',
     };
   },
   computed: {
+    capitalizedName() {
+      return this.storedName.charAt(0).toUpperCase() + this.storedName.slice(1);
+    },
     currentContent() {
-      return this.stepsContent[this.step];
+      return this.stepsContent[this.stepCounter];
     },
   },
   methods: {
     nextStepHandler(storedInputs) {
-      this.step++;
-      if (this.step === this.stepsContent.length) {
+      this.stepCounter++;
+      if (this.stepCounter === this.stepsContent.length) {
         for (const obj of storedInputs) {
           if (obj.name === 'first-name') this.storedName = obj.value;
           if (obj.name === 'email') this.storedEmail = obj.value;
@@ -66,8 +69,7 @@ export default {
       }
     },
     restartApp() {
-      location.reload();
-      // make a proper reseting without reloading
+      this.stepCounter = 0;
     },
   },
 };
