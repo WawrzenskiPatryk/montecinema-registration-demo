@@ -14,6 +14,7 @@
 export default {
   props: {
     wasBlured: { type: Boolean, required: true },
+    allWereBlured: { type: Boolean, required: true },
     type: {
       type: String,
       required: true,
@@ -88,7 +89,7 @@ export default {
   methods: {
     getValidityClass(condition) {
       if (condition) return 'validation-info--correct';
-      else if (this.wasBlured) return 'validation-info--incorrect';
+      else if (this.wasBlured || this.allWereBlured) return 'validation-info--incorrect';
       else return '';
     },
     updateInputValidity() {

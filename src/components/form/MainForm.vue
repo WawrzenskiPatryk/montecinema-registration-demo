@@ -6,6 +6,7 @@
       :name="input.name"
       :type="input.type"
       :placeholder="input.placeholder"
+      :all-were-blured="allWereBlured"
       @validity-update="setValidity"
     />
     <div class="main-form__buttons">
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       storedInputs: [],
+      allWereBlured: false,
     };
   },
   mounted() {
@@ -55,10 +57,11 @@ export default {
     nextStep() {
       for (const input of this.storedInputs) {
         if (!input.valid) {
-          alert('Fill all input fields!');
+          this.allWereBlured = true;
           return;
         }
       }
+      this.allWereBlured = false;
       this.$emit('nextStep', this.storedInputs);
     },
     setValidity(inputStatus) {

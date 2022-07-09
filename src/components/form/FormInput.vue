@@ -1,7 +1,13 @@
 <template>
   <div class="form-input__wrapper">
     <div v-if="type === 'checkbox'" class="form-input form-input--checkbox">
-      <input class="form-input__checkbox" :name="name" v-model="inputValue" :type="computedType" />
+      <input
+        class="form-input__checkbox"
+        :class="checkboxClass"
+        :name="name"
+        v-model="inputValue"
+        :type="computedType"
+      />
       <label class="form-input__checkbox-label" :for="name">
         I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
       </label>
@@ -36,7 +42,8 @@
       @update="updateInputValidity"
       :type="type"
       :input-value="inputValue"
-      :wasBlured="wasBlured"
+      :was-blured="wasBlured"
+      :all-were-blured="allWereBlured"
     />
   </div>
 </template>
@@ -64,6 +71,10 @@ export default {
       type: String,
       required: false,
     },
+    allWereBlured: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
@@ -88,8 +99,15 @@ export default {
     },
     inputClass() {
       return {
-        'form-input__field--incorrect': this.wasBlured && !this.isInputValid,
+        'form-input__field--incorrect':
+          (this.wasBlured || this.allWereBlured) && !this.isInputValid,
         'form-input__field--password': this.type === 'password',
+      };
+    },
+    checkboxClass() {
+      return {
+        'form-input__checkbox--incorrect':
+          (this.wasBlured || this.allWereBlured) && !this.isInputValid,
       };
     },
   },
@@ -157,6 +175,10 @@ export default {
     width: 2.4rem;
     height: 2.4rem;
     opacity: 0;
+  }
+
+  &__checkbox--incorrect + &__checkbox-label::before {
+    outline: #ec1115 solid 2px;
   }
 
   &__checkbox-label {
