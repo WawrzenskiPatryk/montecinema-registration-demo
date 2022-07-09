@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <FormValidator
+    <FormInputValidator
       @update="updateInputValidity"
       :type="type"
       :input-value="inputValue"
@@ -46,11 +46,11 @@
 </template>
 
 <script>
-import FormValidator from './FormValidator.vue';
+import FormInputValidator from './FormInputValidator.vue';
 
 export default {
   components: {
-    FormValidator,
+    FormInputValidator,
   },
   props: {
     name: {
