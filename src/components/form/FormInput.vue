@@ -110,23 +110,20 @@ export default {
     updateInputValidity(value) {
       this.isInputValid = value;
     },
-  },
-  watch: {
-    inputValue() {
-      console.log('watcher triggered on value change');
+    validityUpdateHandler() {
       this.$emit('validityUpdate', {
         name: this.name,
         valid: this.isInputValid,
         value: this.inputValue,
       });
     },
+  },
+  watch: {
+    inputValue() {
+      this.validityUpdateHandler();
+    },
     isInputValid() {
-      console.log('watcher triggered on validation');
-      this.$emit('validityUpdate', {
-        name: this.name,
-        valid: this.isInputValid,
-        value: this.inputValue,
-      });
+      this.validityUpdateHandler();
     },
   },
 };
