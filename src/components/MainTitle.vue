@@ -1,12 +1,12 @@
 <template>
-  <h1 class="main-title">
+  <h2 class="main-title">
     <span class="main-title__part main-title__part--darker">
       {{ firstPart }}
     </span>
-    <span class="main-title__part main-title__part--lighter">
+    <span v-if="showSecondPart" class="main-title__part main-title__part--lighter">
       {{ secondPart }}
     </span>
-  </h1>
+  </h2>
 </template>
 
 <script>
@@ -18,7 +18,12 @@ export default {
     },
     secondPart: {
       type: String,
-      default: 'Dolor sir amet!',
+      default: 'Dolor sir amet?',
+    },
+  },
+  computed: {
+    showSecondPart() {
+      return this.secondPart && this.secondPart.length > 0;
     },
   },
 };

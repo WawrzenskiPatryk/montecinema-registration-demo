@@ -4,7 +4,7 @@
       :first-part="currentContent.title.firstPart"
       :second-part="currentContent.title.secondPart"
     />
-    <BaseCard class="page__base-card">
+    <BaseCard>
       <MainForm
         @next-step="nextHandler"
         :inputs="currentContent.inputs"
@@ -12,9 +12,15 @@
       />
     </BaseCard>
   </main>
-  <main v-else>
-    <h1>{{ storedName }}</h1>
-    <h1>{{ storedEmail }}</h1>
+
+  <main v-else class="main">
+    <MainTitle :first-part="`Good job ${storedName}!`" second-part="" />
+    <span class="main__success-info">
+      We have sent you an email to <strong> {{ storedEmail }} </strong>.
+      <br />
+      Make sure to click the link from the message to activate your account.
+    </span>
+    <BaseButton @click="restartApp" class="main__button"> Go to homepage </BaseButton>
   </main>
 </template>
 
@@ -33,8 +39,8 @@ export default {
   },
   data() {
     return {
-      storedName: '',
-      storedEmail: '',
+      storedName: 'Lorem',
+      storedEmail: 'loremipsum@loremipsum.com',
       step: 0,
       stepsContent: [
         {
@@ -102,6 +108,10 @@ export default {
         }
       }
     },
+    restartApp() {
+      location.reload();
+      // make a proper reseting without reloading
+    },
   },
 };
 </script>
@@ -114,16 +124,28 @@ export default {
   align-items: center;
   padding: 64px 24px;
   gap: 48px;
+  min-height: 80vh;
 
   @media screen and (min-width: 1024px) {
     padding: 124px;
   }
 
   &__button {
+    max-width: 500px;
     width: 100%;
     @media screen and (min-width: 1024px) {
       width: initial;
     }
+  }
+
+  &__success-info {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #292a33;
   }
 }
 </style>
