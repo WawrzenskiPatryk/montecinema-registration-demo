@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <TheHeader class="page__header" />
-    <MainSection class="page__main-section" />
+    <MainSection :steps-content="stepsContent" class="page__main-section" />
   </div>
 </template>
 
@@ -9,10 +9,17 @@
 import TheHeader from './components/TheHeader.vue';
 import MainSection from './components/MainSection.vue';
 
+import steps from './steps.js';
+
 export default {
   components: {
     TheHeader,
     MainSection,
+  },
+  computed: {
+    stepsContent() {
+      return steps;
+    },
   },
 };
 </script>

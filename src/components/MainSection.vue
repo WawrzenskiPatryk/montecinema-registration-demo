@@ -6,7 +6,7 @@
     />
     <BaseCard>
       <MainForm
-        @next-step="nextHandler"
+        @next-step="nextStepHandler"
         :inputs="currentContent.inputs"
         :button-label="currentContent.buttonLabel"
       />
@@ -37,60 +37,17 @@ export default {
     MainForm,
     BaseButton,
   },
+  props: {
+    stepsContent: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       storedName: 'Lorem',
-      storedEmail: 'loremipsum@loremipsum.com',
+      storedEmail: 'lorem@loremipsum.com',
       step: 0,
-      stepsContent: [
-        {
-          title: {
-            firstPart: 'Ahoy you!',
-            secondPart: 'Care to register?',
-          },
-          inputs: [
-            {
-              name: 'email',
-              type: 'email',
-              placeholder: 'Something ending with monterail.com',
-            },
-            {
-              name: 'password',
-              type: 'password',
-              placeholder: 'Enter your password',
-            },
-          ],
-          buttonLabel: 'Next Step',
-        },
-        {
-          title: {
-            firstPart: 'Great!',
-            secondPart: 'Now your name',
-          },
-          inputs: [
-            {
-              name: 'first-name',
-              type: 'text',
-              placeholder: 'e.g. Jessica',
-            },
-            {
-              name: 'last-name',
-              type: 'text',
-              placeholder: 'e.g. Walton',
-            },
-            {
-              name: 'date-of-birth',
-              type: 'date',
-              placeholder: 'DD / MM / YY',
-            },
-            {
-              name: 'privacy-policy',
-              type: 'checkbox',
-            },
-          ],
-          buttonLabel: 'Register',
-        },
-      ],
     };
   },
   computed: {
@@ -99,7 +56,7 @@ export default {
     },
   },
   methods: {
-    nextHandler(storedInputs) {
+    nextStepHandler(storedInputs) {
       this.step++;
       if (this.step === this.stepsContent.length) {
         for (const obj of storedInputs) {

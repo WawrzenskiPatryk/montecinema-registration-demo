@@ -4,7 +4,7 @@
     <label class="form-input__checkbox-label" :for="name">
       I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
     </label>
-    <FormValidator
+    <FormInputValidator
       @update="updateInputValidity"
       :type="type"
       :input-value="inputValue"
