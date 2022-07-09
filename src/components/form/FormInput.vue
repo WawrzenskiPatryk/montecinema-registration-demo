@@ -87,7 +87,10 @@ export default {
       } else return this.type;
     },
     inputClass() {
-      if (this.wasBlured && !this.isInputValid) return 'form-input__field--incorrect';
+      return {
+        'form-input__field--incorrect': this.wasBlured && !this.isInputValid,
+        'form-input__field--password': this.type === 'password',
+      };
     },
   },
   methods: {
@@ -229,6 +232,10 @@ export default {
 
     @media screen and (min-width: 1024px) {
       width: 47.2rem;
+    }
+
+    &--password {
+      padding-right: 6rem;
     }
 
     &--incorrect {
