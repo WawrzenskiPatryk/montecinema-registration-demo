@@ -1,29 +1,21 @@
 # monte-cinema
 
-This template should help get you started developing with Vue 3 in Vite.
+## Local Setup
 
-## Recommended IDE Setup
+To run the app, download this repository to your local machine.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Then in the project's directory run following commands:
 
-## Customize configuration
+```bash
+# install dependencies
+$ npm install
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+# serve with hot-reload
+$ npm run dev
 ```
 
-### Compile and Hot-Reload for Development
+Afterwards you can visit the app at [localhost:3000](http://localhost:3000/).
 
-```sh
-npm run dev
-```
+## Live version
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+You can also check the application's live version at [monte-cinema.web.app](https://monte-cinema.web.app/).
