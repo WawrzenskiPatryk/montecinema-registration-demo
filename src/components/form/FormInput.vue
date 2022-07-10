@@ -188,10 +188,6 @@ export default {
     opacity: 0;
   }
 
-  &__checkbox--incorrect + &__checkbox-label::before {
-    outline: #ec1115 solid 2px;
-  }
-
   &__checkbox-label {
     &::before {
       content: '';
@@ -205,6 +201,10 @@ export default {
       border: 0.75px solid #aeaeb3;
       border-radius: 0.8rem;
     }
+  }
+
+  &__checkbox--incorrect + &__checkbox-label::before {
+    outline: #ec1115 solid 2px;
   }
 
   @media (hover: hover) {
