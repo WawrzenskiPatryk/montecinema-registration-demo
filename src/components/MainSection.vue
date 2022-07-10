@@ -1,5 +1,5 @@
 <template>
-  <main v-if="stepCounter < stepsContent.length" class="main">
+  <main v-if="stepCounter < formSteps.length" class="main">
     <MainTitle
       :first-part="currentContent.title.firstPart"
       :second-part="currentContent.title.secondPart"
@@ -16,7 +16,7 @@
   <main v-else class="main">
     <MainTitle :first-part="`Good job ${capitalizedName}!`" second-part="" />
     <span class="main__success-info">
-      We have sent you an email to <strong> {{ storedEmail }} </strong>.
+      We have sent you an email to <strong> {{ lowerCaseEmail }} </strong>.
       <br />
       Make sure to click the link from the message to activate your account.
     </span>
@@ -38,7 +38,7 @@ export default {
     BaseButton,
   },
   props: {
-    stepsContent: {
+    formSteps: {
       type: Array,
       required: true,
     },
@@ -54,14 +54,17 @@ export default {
     capitalizedName() {
       return this.storedName.charAt(0).toUpperCase() + this.storedName.slice(1);
     },
+    lowerCaseEmail() {
+      return this.storedEmail.toLowerCase();
+    },
     currentContent() {
-      return this.stepsContent[this.stepCounter];
+      return this.formSteps[this.stepCounter];
     },
   },
   methods: {
     nextStepHandler(storedInputs) {
       this.stepCounter++;
-      if (this.stepCounter === this.stepsContent.length) {
+      if (this.stepCounter === this.formSteps.length) {
         for (const obj of storedInputs) {
           if (obj.name === 'first-name') this.storedName = obj.value;
           if (obj.name === 'email') this.storedEmail = obj.value;

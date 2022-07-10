@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <TheHeader class="page__header" />
-    <MainSection :steps-content="stepsContent" class="page__main-section" />
+    <MainSection :form-steps="formSteps" class="page__main-section" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import TheHeader from './components/TheHeader.vue';
 import MainSection from './components/MainSection.vue';
 
-import steps from './steps.js';
+import steps from './formSteps.js';
 
 export default {
   components: {
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      stepsContent: steps,
+      formSteps: steps,
     };
   },
 };
