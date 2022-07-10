@@ -24,8 +24,8 @@
           :placeholder="placeholder"
           :type="computedType"
           v-model="inputValue"
-          @focus="focusHandler('focus')"
-          @blur="focusHandler('blur')"
+          @focus="focusHandler($event, 'focus')"
+          @blur="focusHandler($event, 'blur')"
         />
         <div
           v-if="type === 'password'"
@@ -112,15 +112,23 @@ export default {
     },
   },
   methods: {
-    focusHandler(action) {
+    focusHandler(event, action) {
       if (action === 'blur') this.wasBlured = true;
       if (action === 'focus') this.wasBlured = false;
-      if (this.type !== 'date') return;
-      if (action === 'focus') {
-        this.dateInputFocused = true;
-      } else if (action === 'blur' && this.inputValue === '') {
-        this.dateInputFocused = false;
+      if (this.type === 'date') {
+        if (action === 'focus') {
+          this.dateInputFocused = true;
+          this.triggerMobileDatepicker(event.target);
+        } else if (action === 'blur' && this.inputValue === '') {
+          this.dateInputFocused = false;
+        }
       }
+    },
+    triggerMobileDatepicker(target) {
+      setTimeout(() => {
+        target.focus();
+        target.click();
+      }, 0);
     },
     togglePasswordVisibility() {
       this.passwordInputVisible = !this.passwordInputVisible;
