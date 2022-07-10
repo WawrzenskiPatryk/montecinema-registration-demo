@@ -137,11 +137,14 @@ export default {
       this.isInputValid = value;
     },
     validityUpdateHandler() {
-      this.$emit('validityUpdate', {
+      const isValueString = typeof this.inputValue === 'string';
+      const trimmedValue = isValueString ? this.inputValue.trim() : this.inputValue;
+      const inputPayload = {
         name: this.name,
         valid: this.isInputValid,
-        value: this.inputValue,
-      });
+        value: trimmedValue,
+      };
+      this.$emit('validityUpdate', inputPayload);
     },
   },
   watch: {

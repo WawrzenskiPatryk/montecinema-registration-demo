@@ -64,11 +64,11 @@ export default {
       this.allWereBlured = false;
       this.$emit('nextStep', this.storedInputs);
     },
-    setValidity(inputStatus) {
+    setValidity(inputPayload) {
       for (const input of this.storedInputs) {
-        if (input.name === inputStatus.name) {
-          input.valid = inputStatus.valid;
-          input.value = inputStatus.value;
+        if (input.name === inputPayload.name) {
+          input.valid = inputPayload.valid;
+          input.value = inputPayload.value;
         }
       }
     },
