@@ -116,6 +116,8 @@ export default {
   }
 
   &__log-in-button {
+    user-select: none;
+
     display: flex;
     justify-content: center;
     align-items: center;

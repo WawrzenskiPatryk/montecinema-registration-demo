@@ -6,6 +6,8 @@
 
 <style lang="scss" scoped>
 .base-button {
+  user-select: none;
+
   font-family: 'Roboto Mono';
   font-style: normal;
   font-weight: 500;

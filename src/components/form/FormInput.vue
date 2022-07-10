@@ -267,6 +267,8 @@ export default {
     }
 
     &::placeholder {
+      user-select: none;
+
       color: #85868d;
       font-family: 'Roboto';
       font-style: normal;
