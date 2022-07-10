@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      stepCounter: 0,
+      stepCounter: 1,
       storedName: 'lorem',
       storedEmail: 'lorem@loremipsum.com',
     };

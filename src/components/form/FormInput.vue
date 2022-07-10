@@ -12,6 +12,7 @@
         I accept <a href="#" class="form-input__checkbox-link"> Privacy Policy </a>
       </label>
     </div>
+    <FormInputCheckbox v-if="type === 'checkbox'"></FormInputCheckbox>
 
     <div v-else class="form-input">
       <label class="form-input__label" :for="name">{{ computedName }}</label>
@@ -49,10 +50,12 @@
 </template>
 
 <script>
+import FormInputCheckbox from './FormInputCheckbox.vue';
 import FormInputValidator from './FormInputValidator.vue';
 
 export default {
   components: {
+    FormInputCheckbox,
     FormInputValidator,
   },
   props: {
