@@ -79,12 +79,12 @@ export default [
         name: 'privacy-policy',
         type: 'checkbox',
         // In case of Privacy Policy checkbox ommit the placeholder property.
-        // Warning: checkbox can be used ONLY ONCE in entire app,
+        // Warning: checkbox can be used ONLY ONCE in an entire app,
         // providing "I accept Privacy Policy" label next to it.
       },
     ],
 
-    // Inside text of button HTML element responsible for submitting form
+    // Inner text of button HTML element responsible for submitting form
     buttonLabel: 'Next Step',
   },
 
