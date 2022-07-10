@@ -51,7 +51,7 @@ export default {
     this.storeInputs();
   },
   updated() {
-    this.storeInputs();
+    if (!this.allWereBlured) this.storeInputs();
   },
   methods: {
     nextStep() {
