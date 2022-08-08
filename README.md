@@ -108,7 +108,7 @@ export default [
 ];
 ```
 
-**Keep in mind that the success screen still is going to display only user's name and email adress in it's content.**
+**Keep in mind that the success screen still is going to display only user's name and email adress in its content.**
 
 For the screen to work correctly you **must include** in the file objects shown below (in a step of your choice, in `inputs` array):
 
